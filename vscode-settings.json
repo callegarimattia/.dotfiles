@@ -1,0 +1,97 @@
+{
+  // FILES
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onWindowChange",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+  },
+  // PYTHON
+  "ruff.organizeImports": true,
+  "python.languageServer": "Pylance",
+  "python.defaultInterpreterPath": "python3.11",
+  // JSON
+  "json.format.enable": true,
+  // DEBUG
+  "debug.toolBarLocation": "docked",
+  // SECURITY
+  "security.workspace.trust.untrustedFiles": "open",
+  // EXPLORER
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.sortOrder": "alphabetical",
+  "explorer.autoReveal": false,
+  // TERMINAL
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.cursorBlinking": true,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.explorerKind": "external",
+  // GIT
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.suggestSmartCommit": true,
+  "git.enableCommitSigning": true,
+  // WORKBENCH
+  "workbench.editor.tabActionLocation": "right",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.settings.editor": "json",
+  "workbench.list.smoothScrolling": true,
+  "workbench.sideBar.location": "right",
+  // VIM
+  "vim.smartRelativeLine": true,
+  // EDITOR
+  "editor.lineHeight": 22,
+  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "phase",
+  "editor.inlayHints.fontFamily": "JetBrainsMonoNL Nerd Font",
+  "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
+  "editor.fontWeight": "normal",
+  "editor.tabSize": 2,
+  // "editor.formatOnSave": true,
+  "editor.fontSize": 17,
+  "editor.linkedEditing": false,
+  "editor.smoothScrolling": false,
+  "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  // CUSTOMIZATION
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "meta.function-call.generic.python",
+        "settings": {
+          "foreground": "#DCDCAA"
+        },
+      }
+    ]
+  },
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "indentRainbow.colors": [
+    "#f5c2e722",
+    "#cba6f722",
+    "#f38ba822",
+    "#fab38722",
+    "#f9e2af22",
+    "#a6e3a122",
+    "#94e2d522",
+    "#89dceb22",
+    "#74c7ec22",
+    "#89b4fa22",
+  ],
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground2": "#B3E1A7",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#E48FA8",
+    "editorBracketHighlight.foreground1": "#EFB68E",
+    "editorBracketHighlight.foreground4": "#C5A7F2",
+    "editorBracketHighlight.foreground3": "#F5E3B5",
+  },
+  "window.zoomLevel": -2,
+  "window.dialogStyle": "custom",
+}
