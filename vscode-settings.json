@@ -1,6 +1,5 @@
 {
   // FILES
-  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "onWindowChange",
   "files.exclude": {
@@ -11,10 +10,25 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
   },
+  // GOLANG
+  "go.inferGopath": true,
+  "go.lintOnSave": "package",
+  "go.lintTool": "golangci-lint",
+  "go.vetOnSave": "package",
+  "go.coverOnSave": false,
+  "go.useLanguageServer": true,
+  "[go]":{
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    }
+  },
   // PYTHON
   "ruff.organizeImports": true,
   "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "python3.11",
+  "python.defaultInterpreterPath": "python3",
   // JSON
   "json.format.enable": true,
   // DEBUG
@@ -25,17 +39,21 @@
   "explorer.confirmDelete": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.autoReveal": false,
-  // TERMINAL
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.cursorBlinking": true,
   "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.fontFamily": "monospace",
+  // TERMINAL
+  "terminal.external.osxExec": "iTerm2.app",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font",
   "terminal.explorerKind": "external",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.cursorStyle": "line",
   // GIT
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.suggestSmartCommit": true,
   "git.enableCommitSigning": true,
+  "github-actions.remote-name": "upstream",
+  "git.openRepositoryInParentFolders": "never",
   // WORKBENCH
   "workbench.editor.tabActionLocation": "right",
   "workbench.editor.tabSizing": "shrink",
@@ -45,6 +63,40 @@
   "workbench.sideBar.location": "right",
   // VIM
   "vim.smartRelativeLine": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
   // EDITOR
   "editor.lineHeight": 22,
   "editor.fontLigatures": true,
@@ -53,8 +105,9 @@
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
   "editor.fontWeight": "normal",
   "editor.tabSize": 2,
+  "editor.inlayHints.enabled":"on",
   // "editor.formatOnSave": true,
-  "editor.fontSize": 17,
+  "editor.fontSize": 15,
   "editor.linkedEditing": false,
   "editor.smoothScrolling": false,
   "editor.guides.bracketPairs": true,
@@ -94,4 +147,12 @@
   },
   "window.zoomLevel": -2,
   "window.dialogStyle": "custom",
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+},
+"extensions.ignoreRecommendations": true,
+"files.associations": {
+  "*.toml": "properties"
+},
+"workbench.startupEditor": "none",
 }
