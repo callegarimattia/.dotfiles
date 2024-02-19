@@ -8,7 +8,7 @@ path+=$HOME/go/bin
 
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-
+export GOPRIVATE=github.com/emma-sleep/*
 
 export GPG_TTY=$(tty)
 typeset -U path
@@ -35,9 +35,9 @@ alias q='exit'
 alias c='clear'
 
 # AWS
-alias awslogindev="aws sso login --profile dataeng-dev"
-alias awsloginstg="aws sso login --profile dataeng-stage"
-alias awsloginprod="aws sso login --profile dataeng-prod"
+alias awslogindev="aws sso login --profile ecom-dev"
+alias awsloginstg="aws sso login --profile ecom-stage"
+alias awsloginprod="aws sso login --profile ecom-prod"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
