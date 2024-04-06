@@ -40,7 +40,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always",
       "source.fixAll": "always"
-    },
+    }
   },
   // PYTHON
   "[python]": {
