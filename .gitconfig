@@ -43,12 +43,12 @@
     fho = flow hotfix checkout
     fhp = flow hotfix publish
 
-    l = log
+    l = log --reverse
     lg = log --graph
     lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
-    lo = log --oneline
-    lp = log --patch
-    lt = log --topo-order
+    lo = log --oneline --reverse
+    lp = log --patch --reverse
+    lt = log --topo-order --reverse
 
     o = checkout
     ob = checkout -b
@@ -78,3 +78,16 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [pull]
 	rebase = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[maintenance]
+	repo = /Users/callegarimattia/emma/marketplace-order-mediator
+	repo = /Users/callegarimattia/emma/marketplace-outbound-connector
+	repo = /Users/callegarimattia/emma/marketplace-inbound-connector
+	repo = /Users/callegarimattia/emma/fluent-search-service
+[merge]
+	tool = kdiff3
