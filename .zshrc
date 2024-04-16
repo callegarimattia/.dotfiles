@@ -63,5 +63,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG-}" ] && printf %s "${HOME}/.nvm" || printf 
 # Emma Sleep
 export APP_SECRET_CONFIG="./config/ecom-dev.sops.yaml"
 export APP_CONFIG_FILE="./config/ecom-dev.yaml"
-source ${XDG_CONFIG}/developer-toolbox/developer-toolbox.sh
+source $HOME/.developer-toolbox/developer-toolbox.sh
 export GOPRIVATE=github.com/emma-sleep/*
