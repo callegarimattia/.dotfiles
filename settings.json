@@ -4,7 +4,6 @@
     "*": true,
     "plaintext": false,
     "markdown": "true",
-    "scminput": false
   },
   // FILES
   "files.trimTrailingWhitespace": true,
@@ -90,6 +89,7 @@
   "workbench.list.smoothScrolling": true,
   "workbench.sideBar.location": "right",
   // VIM
+  "vim.leader": "<space>",
   "vim.smartRelativeLine": true,
   "vim.easymotion": true,
   "vim.incsearch": true,
@@ -110,33 +110,13 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
-        "<leader>",
-        "d"
-      ],
-      "after": [
-        "d",
-        "d"
-      ]
-    },
-    {
-      "before": [
         "<C-n>"
       ],
       "commands": [
         ":nohl"
       ]
     },
-    {
-      "before": [
-        "K"
-      ],
-      "commands": [
-        "lineBreakInsert"
-      ],
-      "silent": true
-    }
   ],
-  "vim.leader": "<space>",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
