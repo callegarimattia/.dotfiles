@@ -1,13 +1,14 @@
 {
+  //JSON
+  "json.format.enable": true,
+
   // COPILOT
   "github.copilot.enable": {
     "*": true,
-    "plaintext": false,
-    "markdown": "true",
   },
+
   // FILES
   "files.trimTrailingWhitespace": true,
-  "files.autoSave": "onWindowChange",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -16,6 +17,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true
   },
+
   // GOLANG
   "gopls": {
     "ui.semanticTokens": true
@@ -35,37 +37,24 @@
   "go.testTags": "unit,integration,e2e",
   "[go]": {
     "editor.insertSpaces": true,
-    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always",
       "source.fixAll": "always"
     }
   },
-  // PYTHON
-  "[python]": {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "always",
-      "source.fixAll": "always"
-    },
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
-  "ruff.organizeImports": true,
-  "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "python3",
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "standard",
-  // JSON
-  "json.format.enable": true,
+
   // DEBUG
   "debug.toolBarLocation": "docked",
+
   // SECURITY
   "security.workspace.trust.untrustedFiles": "open",
+
   // EXPLORER
   "explorer.confirmDelete": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.autoReveal": false,
   "explorer.confirmDragAndDrop": false,
+
   // TERMINAL
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
@@ -73,6 +62,7 @@
   "terminal.explorerKind": "external",
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.cursorStyle": "line",
+
   // GIT
   "git.confirmSync": false,
   "git.autofetch": true,
@@ -80,6 +70,7 @@
   "git.enableCommitSigning": true,
   "github-actions.remote-name": "upstream",
   "git.openRepositoryInParentFolders": "never",
+
   // WORKBENCH
   "workbench.startupEditor": "none",
   "workbench.editor.tabActionLocation": "right",
@@ -88,67 +79,75 @@
   "workbench.settings.editor": "json",
   "workbench.list.smoothScrolling": true,
   "workbench.sideBar.location": "right",
+
   // VIM
-  "vim.leader": "<space>",
+  "vim.leader": "<Space>",
   "vim.smartRelativeLine": true,
-  "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
+  "vim.normalModeKeyBindings": [
+    // jump between buffers
+    { "before": ["<S-h>"], "commands": [":bprevious"]},
+    { "before": ["<S-l>"], "commands":[":bnext"]},
+    // split windows
+    { "before": ["leader","v"], "commands": [":vsplit"]},
+    { "before": ["leader","s"], "commands": [":split"]},
+    // move between panes
+    { "before": ["leader", "h"], "commands":["workbench.action.focusLeftGroup"]},
+    { "before": ["leader", "j"], "commands":["workbench.action.focusBelowGroup"]},
+    { "before": ["leader", "k"], "commands":["workbench.action.focusAboveGroup"]},
+    { "before": ["leader", "l"], "commands":["workbench.action.focusRightGroup"]},
+    // NICE TO HAVE
+    { "before": ["leader", "q"], "commands": [":q!"] },
+    { "before": ["leader", "w"], "commands": [":w!"] },
+    { "before": ["leader", "x"], "commands": [":x!"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"]},
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"]},
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"]},
+    { "before": ["leader", "p"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["leader", "f"], "commands": ["editor.action.formatDocument"] },
+    { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"]}
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "commands": [
-        ":nohl"
-      ]
-    },
+    "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    // toggle comment selection
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
   ],
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false
-  },
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
-  },
+
+  // ZENMODE
+  "zenMode.hideLineNumbers": false,
+
   // EDITOR
+  "editor.suggest.insertMode": "replace",
+  "editor.linkedEditing": true,
   "editor.lineHeight": 22,
   "editor.fontLigatures": true,
-  "editor.cursorBlinking": "phase",
   "editor.inlayHints.fontFamily": "JetBrainsMonoNL Nerd Font",
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
   "editor.fontWeight": "normal",
   "editor.tabSize": 2,
   "editor.indentSize": 2,
-  "editor.detectIndentation": false,
   "editor.inlayHints.enabled": "on",
   "editor.quickSuggestions": {
     "other": "on",
     "comments": "on",
     "strings": "on"
   },
-  "editor.formatOnSave": true,
-  "editor.fontSize": 20,
-  "editor.linkedEditing": false,
+  "editor.fontSize": 22,
   "editor.smoothScrolling": false,
   "editor.guides.bracketPairs": true,
   "editor.bracketPairColorization.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
   "editor.minimap.enabled": false,
+
   // CUSTOMIZATION
   "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -180,15 +179,10 @@
     "editorBracketHighlight.foreground4": "#C5A7F2",
     "editorBracketHighlight.foreground3": "#F5E3B5"
   },
-  "window.zoomLevel": -1,
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": 0.5,
   "window.dialogStyle": "custom",
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  },
   "extensions.ignoreRecommendations": true,
-  "files.associations": {
-    "*.toml": "properties"
-  },
   "redhat.telemetry.enabled": false,
-  "githubPullRequests.pullBranch": "never"
+  "breadcrumbs.enabled": false,
 }
