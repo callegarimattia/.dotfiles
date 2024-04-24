@@ -15,6 +15,7 @@ export path
 
 export XDG_CONFIG="$HOME/.config"
 export XDG_CACHE="$HOME/.cache"
+export EDITOR=nvim
 
 # Path to your oh-my-zsh installation.
 export ZSH="$XDG_CONFIG/oh-my-zsh"
@@ -51,14 +52,11 @@ alias python='python3'
 alias q='exit'
 alias c='clear'
 
+# Evals
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-
-# NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(fzf --zsh)"
 
 # Emma Sleep
 export APP_SECRET_CONFIG="./config/ecom-dev.sops.yaml"

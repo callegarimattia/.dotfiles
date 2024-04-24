@@ -4,7 +4,10 @@
 
   // COPILOT
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
   },
 
   // FILES
@@ -82,12 +85,20 @@
 
   // VIM
   "vim.leader": "<Space>",
+  "vim.surround": true,
   "vim.smartRelativeLine": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  // for performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+  },
   "vim.normalModeKeyBindings": [
+    // remove all search highlights after hitting enter
+    { "before": ["<CR>"], "commands": [":noh","<CR>","<CR>"]},
     // jump between buffers
     { "before": ["<S-h>"], "commands": [":bprevious"]},
     { "before": ["<S-l>"], "commands":[":bnext"]},
@@ -108,9 +119,18 @@
     { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"]},
     { "before": ["leader", "p"], "commands": ["workbench.action.quickOpen"] },
     { "before": ["leader", "f"], "commands": ["editor.action.formatDocument"] },
-    { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"]}
+    { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"]},
+    // Golang beatiful error handling
+    { "before": ["leader", "e", "e"],
+      "after": ["o",
+        "i","f"," ","e","r","r"," ","!","="," ", "n","i","l", "{","<CR>",
+        "<Esc>", "O","r","e","t","u","r","n", " ",
+        "f","m","t",".","E","r","r","o","r","f","(","\"",":","%","w","\"","," ,"e","r","r",")",
+        "<Esc>", "F", ":", "i"
+      ]
+    }
   ],
-    "vim.visualModeKeyBindings": [
+  "vim.visualModeKeyBindings": [
     // Stay in visual mode while indenting
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
     { "before": [">"], "commands": ["editor.action.indentLines"] },
@@ -120,14 +140,13 @@
     // toggle comment selection
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
   ],
-
   // ZENMODE
   "zenMode.hideLineNumbers": false,
 
   // EDITOR
   "editor.suggest.insertMode": "replace",
   "editor.linkedEditing": true,
-  "editor.lineHeight": 22,
+  "editor.lineHeight": 30,
   "editor.fontLigatures": true,
   "editor.inlayHints.fontFamily": "JetBrainsMonoNL Nerd Font",
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
