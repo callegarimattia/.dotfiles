@@ -41,7 +41,12 @@ alias awsloginprod="aws sso login --profile ecom-prod"
 
 # GPG TTY
 export GPG_TTY=$(tty)
-export PAGER=""
+
+# use vi key bindings
+bindkey -v
+# avoid the annoying backspace/delete issue
+# where backspace stops deleting characters
+bindkey -v '^?' backward-delete-char
 
 # Aliases
 alias dps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\""

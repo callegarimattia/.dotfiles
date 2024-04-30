@@ -65,7 +65,7 @@
   // TERMINAL
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.explorerKind": "external",
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.cursorStyle": "line",
@@ -390,7 +390,7 @@
     "comments": "on",
     "strings": "on"
   },
-  "editor.fontSize": 22,
+  "editor.fontSize": 20,
   "editor.smoothScrolling": false,
   "editor.guides.bracketPairs": true,
   "editor.bracketPairColorization.enabled": true,
@@ -429,9 +429,10 @@
     "editorBracketHighlight.foreground3": "#F5E3B5"
   },
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 0.1,
   "window.dialogStyle": "custom",
   "extensions.ignoreRecommendations": true,
   "redhat.telemetry.enabled": false,
   "breadcrumbs.enabled": false,
+  "githubPullRequests.pullBranch": "never",
 }
