@@ -1,15 +1,13 @@
 {
   //JSON
   "json.format.enable": true,
-
   // COPILOT
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "plaintext": false,
     "markdown": false,
     "scminput": false
   },
-
   // FILES
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
@@ -20,10 +18,18 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true
   },
-
   // GOLANG
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.go$",
+        "cmd": "golines ${file} -w -m"
+      }
+    ]
+  },
   "gopls": {
-    "ui.semanticTokens": true
+    "ui.semanticTokens": true,
+    "formatting.gofumpt": true,
   },
   "go.toolsManagement.autoUpdate": true,
   "go.inferGopath": true,
@@ -32,32 +38,30 @@
   "go.vetOnSave": "workspace",
   "go.coverOnSave": false,
   "go.useLanguageServer": true,
-  "go.formatTool": "gofumpt",
   "go.inlayHints.rangeVariableTypes": true,
   "go.buildFlags": [
     "-tags=unit,integration,e2e"
   ],
   "go.testTags": "unit,integration,e2e",
   "[go]": {
+    "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always",
-      "source.fixAll": "always"
+      "source.fixAll": "always",
     }
   },
-
+  // PYTHON
+  "python.languageServer": "Pylance",
   // DEBUG
   "debug.toolBarLocation": "docked",
-
   // SECURITY
   "security.workspace.trust.untrustedFiles": "open",
-
   // EXPLORER
   "explorer.confirmDelete": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.autoReveal": false,
   "explorer.confirmDragAndDrop": false,
-
   // TERMINAL
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
@@ -65,7 +69,6 @@
   "terminal.explorerKind": "external",
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.cursorStyle": "line",
-
   // GIT
   "git.confirmSync": false,
   "git.autofetch": true,
@@ -73,7 +76,6 @@
   "git.enableCommitSigning": true,
   "github-actions.remote-name": "upstream",
   "git.openRepositoryInParentFolders": "never",
-
   // WORKBENCH
   "workbench.startupEditor": "none",
   "workbench.editor.tabActionLocation": "right",
@@ -82,7 +84,6 @@
   "workbench.settings.editor": "json",
   "workbench.list.smoothScrolling": true,
   "workbench.sideBar.location": "right",
-
   // VIM
   "vim.leader": "<Space>",
   "vim.surround": true,
@@ -98,55 +99,285 @@
   },
   "vim.normalModeKeyBindings": [
     // remove all search highlights after hitting enter
-    { "before": ["<CR>"], "commands": [":noh","<CR>","<CR>"]},
+    {
+      "before": [
+        "<CR>"
+      ],
+      "commands": [
+        ":noh",
+        "<CR>",
+        "<CR>"
+      ]
+    },
     // jump between buffers
-    { "before": ["<S-h>"], "commands": [":bprevious"]},
-    { "before": ["<S-l>"], "commands":[":bnext"]},
+    {
+      "before": [
+        "<S-h>"
+      ],
+      "commands": [
+        ":bprevious"
+      ]
+    },
+    {
+      "before": [
+        "<S-l>"
+      ],
+      "commands": [
+        ":bnext"
+      ]
+    },
     // split windows
-    { "before": ["leader","v"], "commands": [":vsplit"]},
-    { "before": ["leader","s"], "commands": [":split"]},
+    {
+      "before": [
+        "leader",
+        "v"
+      ],
+      "commands": [
+        ":vsplit"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "s"
+      ],
+      "commands": [
+        ":split"
+      ]
+    },
     // move between panes
-    { "before": ["leader", "h"], "commands":["workbench.action.focusLeftGroup"]},
-    { "before": ["leader", "j"], "commands":["workbench.action.focusBelowGroup"]},
-    { "before": ["leader", "k"], "commands":["workbench.action.focusAboveGroup"]},
-    { "before": ["leader", "l"], "commands":["workbench.action.focusRightGroup"]},
+    {
+      "before": [
+        "leader",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.focusLeftGroup"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.focusBelowGroup"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.focusAboveGroup"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.focusRightGroup"
+      ]
+    },
     // NICE TO HAVE
-    { "before": ["leader", "q"], "commands": [":q!"] },
-    { "before": ["leader", "w"], "commands": [":w!"] },
-    { "before": ["leader", "x"], "commands": [":x!"] },
-    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"]},
-    { "before": ["]", "d"], "commands": ["editor.action.marker.next"]},
-    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"]},
-    { "before": ["leader", "p"], "commands": ["workbench.action.quickOpen"] },
-    { "before": ["leader", "f"], "commands": ["editor.action.formatDocument"] },
-    { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"]},
+    {
+      "before": [
+        "leader",
+        "q"
+      ],
+      "commands": [
+        ":q!"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        ":w!"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "x"
+      ],
+      "commands": [
+        ":x!"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "p"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "h"
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
+    },
     // Golang beatiful error handling
-    { "before": ["leader", "e", "e"],
-      "after": ["o",
-        "i","f"," ","e","r","r"," ","!","="," ", "n","i","l", "{","<CR>",
-        "<Esc>", "O","r","e","t","u","r","n", " ",
-        "f","m","t",".","E","r","r","o","r","f","(","\"",":","%","w","\"","," ,"e","r","r",")",
-        "<Esc>", "F", ":", "i"
+    {
+      "before": [
+        "leader",
+        "e",
+        "e"
+      ],
+      "after": [
+        "o",
+        "i",
+        "f",
+        " ",
+        "e",
+        "r",
+        "r",
+        " ",
+        "!",
+        "=",
+        " ",
+        "n",
+        "i",
+        "l",
+        "{",
+        "<CR>",
+        "<Esc>",
+        "O",
+        "r",
+        "e",
+        "t",
+        "u",
+        "r",
+        "n",
+        " ",
+        "f",
+        "m",
+        "t",
+        ".",
+        "E",
+        "r",
+        "r",
+        "o",
+        "r",
+        "f",
+        "(",
+        "\"",
+        ":",
+        "%",
+        "w",
+        "\"",
+        ",",
+        "e",
+        "r",
+        "r",
+        ")",
+        "<Esc>",
+        "F",
+        ":",
+        "i"
       ]
     }
   ],
   "vim.visualModeKeyBindings": [
     // Stay in visual mode while indenting
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
-    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
     // Move selected lines while staying in visual mode
-    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
-    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    {
+      "before": [
+        "J"
+      ],
+      "commands": [
+        "editor.action.moveLinesDownAction"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.moveLinesUpAction"
+      ]
+    },
     // toggle comment selection
-    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+    {
+      "before": [
+        "leader",
+        "c"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    }
   ],
   // ZENMODE
   "zenMode.hideLineNumbers": false,
-
   // EDITOR
   "editor.suggest.insertMode": "replace",
   "editor.linkedEditing": true,
-  "editor.lineHeight": 30,
+  "editor.lineHeight": 24,
   "editor.fontLigatures": true,
   "editor.inlayHints.fontFamily": "JetBrainsMonoNL Nerd Font",
   "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
@@ -166,7 +397,6 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
   "editor.minimap.enabled": false,
-
   // CUSTOMIZATION
   "editor.tokenColorCustomizations": {
     "textMateRules": [
