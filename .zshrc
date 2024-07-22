@@ -23,22 +23,15 @@ export XDG_CACHE="$HOME/.cache"
 export EDITOR=nvim
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
 
-# Plugins and Themes for ZSH
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-    autoload -Uz compinit
-    compinit
-fi
-
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
+source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
 
 # AWS Aliases
-alias awslogindev="aws sso login --profile mkpdev"
-alias awsloginstg="aws sso login --profile mkpstage"
-alias awsloginprod="aws sso login --profile mkpprod"
-alias awsloginprodelevate="aws sso login --profile mkpprodelevated"
+# alias awslogindev="aws sso login --profile mkpdev"
+# alias awsloginstg="aws sso login --profile mkpstage"
+# alias awsloginprod="aws sso login --profile mkpprod"
+# alias awsloginprodelevate="aws sso login --profile mkpprodelevated"
 
 # Aliases
 alias dps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\""
@@ -62,20 +55,12 @@ alias gdml='git for-each-ref --format "%(refname:short)" refs/heads | grep -v "m
 
 
 # Evals
-eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"
 
 # Emma Sleep
-export APP_SECRET_CONFIG="./config/ecom-dev.sops.yaml"
-export APP_CONFIG_FILE="./config/ecom-dev.yaml"
-source $HOME/.developer-toolbox/developer-toolbox.sh
-export GOPRIVATE=github.com/emma-sleep/*
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
+# export APP_SECRET_CONFIG="./config/ecom-dev.sops.yaml"
+# export APP_CONFIG_FILE="./config/ecom-dev.yaml"
+# source $HOME/.developer-toolbox/developer-toolbox.sh
+# export GOPRIVATE=github.com/emma-sleep/*
