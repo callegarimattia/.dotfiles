@@ -3,78 +3,61 @@
 	name = Mattia Callegari
 	email = callegari.mattia@protonmail.com
 	signingkey = 252AC3E2DEE2C78C11BE915E6DE2238F580B079B
-
 [commit]
 	gpgsign = true
-
 [alias]
-    a = add
-    aa = add --all
-    ap = add --patch
-    au = add --update
+	a = add
+	aa = add --all
+	ap = add --patch
+	au = add --update
 
-    b = branch
-    ba = branch --all
-    bd = branch --delete
-    bD = branch --delete --force
-    bm = branch --move
-    bM = branch --move --force
+	b = branch
+	ba = branch --all
+	bd = branch --delete
+	bD = branch --delete --force
+	bm = branch --move
+	bM = branch --move --force
 
-    c = commit
-    ca = commit --amend
-    ci = commit --interactive
-    cm = commit --message
-    cv = commit --verbose
+	c = commit
+	ca = commit --amend
+	ci = commit --interactive
+	cm = commit --message
+	cv = commit --verbose
 
-    d = diff
-    dc = diff --cached
-    ds = diff --staged
-    dw = diff --word-diff
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+	dw = diff --word-diff
 
-    f = flow
+	l = log
+	lg = log --graph
+	lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+	lo = log --oneline
+	lp = log --patch
+	lt = log --topo-order
 
-    ff = flow feature
-    ffs = flow feature start
-    ffo = flow feature checkout
-    ffp = flow feature publish
+	o = checkout
+	ob = checkout -b
 
-    fh = flow hotfix
-    fhs = flow hotfix start
-    fho = flow hotfix checkout
-    fhp = flow hotfix publish
+	s = status --short --branch
 
-    l = log --reverse
-    lg = log --graph
-    lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
-    lo = log --oneline --reverse
-    lp = log --patch --reverse
-    lt = log --topo-order --reverse
-
-    o = checkout
-    ob = checkout -b
-
-    s = status --short --branch
-
-    branch-list-merged = "!git branch --merged develop | grep -v -E '(develop|origin|master)'"
-    branch-delete-merged = "!git branch-list-merged | xargs git branch -d"
-
-    unstage = reset HEAD
-    undo-commit = reset --soft HEAD^
-    set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-
+	unstage = reset HEAD
+	undo-commit = reset --soft HEAD^
+	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	staash = stash --all
+	; delete-local = !git for-each-ref --format '%(refname:short)' refs/heads | grep -v "master\|main" | xargs git branch -D
 [color]
-    ui = auto
-
+	ui = auto
 [url "ssh://git@github.com/"]
-    insteadOf = "https://github.com/"
-
+	insteadOf = "https://github.com/"
 [core]
-    excludesFile = ~/.gitignore_global
+	excludesFile = ~/.gitignore_global
+	editor = nvim
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [pull]
 	rebase = true

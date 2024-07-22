@@ -2,28 +2,23 @@ return {
     {
         "nvim-neotest/neotest",
         dependencies = {
-            "nvim-neotest/neotest-go",
-            "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "marilari88/neotest-vitest",
             "nvim-neotest/neotest-plenary",
+            "nvim-neotest/nvim-nio",
         },
         config = function()
-            local neotest_ns = vim.api.nvim_create_namespace("neotest")
-            vim.diagnostic.config({
-                virtual_text = {
-                    format = function(diagnostic)
-                        local message =
-                            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-                        return message
-                    end,
-                },
-            }, neotest_ns)
             local neotest = require("neotest")
             neotest.setup({
                 adapters = {
-                    require("neotest-go")
+                    require("neotest-vitest"),
+                    require("neotest-plenary").setup({
+                        -- this is my standard location for minimal vim rc
+                        -- in all my projects
+                        min_init = "./scripts/tests/minimal.vim",
+                    }),
                 }
             })
 
@@ -33,3 +28,4 @@ return {
         end,
     },
 }
+

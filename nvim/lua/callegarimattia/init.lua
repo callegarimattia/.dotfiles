@@ -1,24 +1,27 @@
+require("callegarimattia.set")
 require("callegarimattia.remap")
 require("callegarimattia.lazy_init")
-require("callegarimattia.set")
 
 local augroup = vim.api.nvim_create_augroup
-local callegarimattiaGroup = augroup('callegarimattia', {})
+local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-
--- Makes a reload function callable as a command
 function R(name)
     require("plenary.reload").reload_module(name)
 end
+
+vim.filetype.add({
+    extension = {
+        templ = 'templ',
+    }
+})
 
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
     callback = function()
-
         vim.highlight.on_yank({
             higroup = 'IncSearch',
             timeout = 40,
@@ -27,17 +30,16 @@ autocmd('TextYankPost', {
 })
 
 autocmd({ "BufWritePre" }, {
-    group = callegarimattiaGroup,
+    group = ThePrimeagenGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
-    group = callegarimattiaGroup,
+    group = ThePrimeagenGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "gI", function() vim.lsp.buf.implementation() end, opts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -48,6 +50,16 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
+})
+
+-- lint after leaving insert or saving
+autocmd({ "BufReadPost", "InsertLeave", "FocusGained" }, {
+    callback = function()
+        local lint_status, lint = pcall(require, "lint")
+        if lint_status then
+            lint.try_lint()
+        end
+    end,
 })
 
 vim.g.netrw_browse_split = 0

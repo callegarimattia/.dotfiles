@@ -21,52 +21,33 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
+
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+                "rust_analyzer",
                 "gopls",
-                "pylsp"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
+
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
 
-                ["lua_ls"] = function() -- Lua language server options
+                ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
-                        settings = {
-                            Lua = {
-                                diagnostic = {
-                                    globals = { 'vim' },
-                                },
-                                workspace = {
-                                    library = vim.api.nvim_get_runtime_file("", true),
-                                },
-                                telemetry = {
-                                    enable = false,
-                                }
-                            }
-                        }
-                    }
-                end,
-
-                ["gopls"] = function() -- Go language server settings
-                    local lspconfig = require("lspconfig")
-                    lspconfig.gopls.setup {
                         capabilities = capabilities,
                         settings = {
-                            gopls = {
-                                analyses = {
-                                    unusedparams = true,
-                                },
-                                staticcheck = true,
-                                gofumpt = true,
-                                usePlaceholders = true,
+                            Lua = {
+				    runtime = { version = "Lua 5.1" },
+                                diagnostics = {
+                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                }
                             }
                         }
                     }
@@ -75,11 +56,6 @@ return {
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.event:on(
-            'confirm_done',
-            require('nvim-autopairs.completion.cmp').on_confirm_done()
-        )
 
         cmp.setup({
             snippet = {
@@ -95,10 +71,12 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
+                { name = 'luasnip' }, -- For luasnip users.
             }, {
                 { name = 'buffer' },
             })
         })
+
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {

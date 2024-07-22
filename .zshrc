@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # PATH configuration
 path+=/opt/homebrew/bin
 path+=/usr/bin
@@ -17,43 +10,43 @@ path+=/usr/local/bin
 path+=/usr/local/sbin
 path+=/opt/homebrew/share/pypy3.10
 path+=$HOME/go/bin
+path+=$HOME/emma/marketplace-toolbox/bin
+fpath+=$HOME/emma/marketplace-toolbox/bin
 typeset -U path
-export path
+typeset -U fpath
 
+export path
+export fpath
+export GPG_TTY=$(tty)
 export XDG_CONFIG="$HOME/.config"
 export XDG_CACHE="$HOME/.cache"
 export EDITOR=nvim
-
-# Path to your oh-my-zsh installation.
-export ZSH="$XDG_CONFIG/oh-my-zsh"
-export ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git history)
+export HOMEBREW_AUTO_UPDATE_SECS="86400"
 
 # Plugins and Themes for ZSH
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
+fi
+
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/oh-my-zsh.sh
+source "$(brew --prefix)/opt/spaceship/spaceship.zsh"
 
 # AWS Aliases
-alias awslogindev="aws sso login --profile ecom-dev"
-alias awsloginstg="aws sso login --profile ecom-stage"
-alias awsloginprod="aws sso login --profile ecom-prod"
-
-# GPG TTY
-export GPG_TTY=$(tty)
-
-# use vi key bindings
-bindkey -v
-# avoid the annoying backspace/delete issue
-# where backspace stops deleting characters
-bindkey -v '^?' backward-delete-char
+alias awslogindev="aws sso login --profile mkpdev"
+alias awsloginstg="aws sso login --profile mkpstage"
+alias awsloginprod="aws sso login --profile mkpprod"
+alias awsloginprodelevate="aws sso login --profile mkpprodelevated"
 
 # Aliases
 alias dps="docker ps --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Ports}}\""
 alias v='nvim'
+alias vi='nvim'
 alias vim='nvim'
 alias cat='bat'
-alias rm='trash'
+alias rm='trash -F'
 alias tl='trash -l'
 alias te='trash -l && trash -e'
 alias tree='eza --tree --icons'
@@ -63,9 +56,13 @@ alias ll='eza -l --color=always --icons --group-directories-first'
 alias python='python3'
 alias q='exit'
 alias c='clear'
+alias g='git'
+alias lz='lazygit'
+alias gdml='git for-each-ref --format "%(refname:short)" refs/heads | grep -v "master\|main" | xargs git branch -D'
+
 
 # Evals
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"
@@ -76,5 +73,9 @@ export APP_CONFIG_FILE="./config/ecom-dev.yaml"
 source $HOME/.developer-toolbox/developer-toolbox.sh
 export GOPRIVATE=github.com/emma-sleep/*
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
