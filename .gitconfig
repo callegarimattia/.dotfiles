@@ -1,0 +1,69 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Mattia Callegari
+	email = callegari.mattia@protonmail.com
+	signingkey = B1AC73E4E30A8D4A
+[commit]
+	gpgsign = true
+[alias]
+	a = add
+	aa = add --all
+	ap = add --patch
+	au = add --update
+
+	b = branch
+	ba = branch --all
+	bd = branch --delete
+	bD = branch --delete --force
+	bm = branch --move
+	bM = branch --move --force
+
+	c = commit
+	ca = commit --amend
+	ci = commit --interactive
+	cm = commit --message
+	cv = commit --verbose
+
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+	dw = diff --word-diff
+
+	l = log
+	lg = log --graph
+	lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+	lo = log --oneline
+	lp = log --patch
+	lt = log --topo-order
+
+	o = checkout
+	ob = checkout -b
+
+	s = status --short --branch
+
+	unstage = reset HEAD
+	undo-commit = reset --soft HEAD^
+	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	staash = stash --all
+[color]
+	ui = auto
+[url "ssh://git@github.com/"]
+	insteadOf = "https://github.com/"
+[core]
+	excludesFile = ~/.gitignore_global
+	editor = nvim
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[maintenance]
+[merge]
+	tool = kdiff3

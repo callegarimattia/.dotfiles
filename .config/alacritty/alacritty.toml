@@ -1,0 +1,10 @@
+import = ["~/.config/alacritty/tokyonight_moon.toml"]
+[window]
+	decorations = "Buttonless"
+    position = {x = 1400, y = 0}
+[font]
+	normal = { family = "Iosevka Nerd Font", style = "Regular" }
+	size = 24
+	builtin_box_drawing = false
+[mouse]
+	hide_when_typing = true
