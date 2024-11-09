@@ -1,7 +1,7 @@
-import = ["~/.config/alacritty/tokyonight_moon.toml"]
+[general]
+    import = ["~/.config/alacritty/tokyonight_moon.toml"]
 [window]
 	decorations = "Buttonless"
-    position = {x = 1400, y = 0}
 [font]
 	normal = { family = "Iosevka Nerd Font", style = "Regular" }
 	size = 24
