@@ -2,7 +2,7 @@
 [user]
 	name = Mattia Callegari
 	email = callegari.mattia@protonmail.com
-	signingkey = 1932FC4D064625EC 
+    signingkey = 1932FC4D064625EC
 [commit]
 	gpgsign = true
 [alias]

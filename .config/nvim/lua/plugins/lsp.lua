@@ -37,6 +37,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "gopls",
+                "pyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -85,6 +86,23 @@ return {
                         },
                     })
                 end,
+
+                ["pyright"] = function()
+                    lspconfig.pyright.setup({
+                        {
+                            capabilities = capabilities,
+                            settings = {
+                                python = {
+                                    analysis = {
+                                        autoSearchPaths = true,
+                                        diagnosticMode = "openFilesOnly",
+                                        useLibraryCodeForTypes = true
+                                    }
+                                }
+                            }
+                        }
+                    })
+                end
             },
         })
 
