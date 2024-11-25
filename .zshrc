@@ -69,13 +69,3 @@ PERL5LIB="/Users/callegarimattia/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; expo
 PERL_LOCAL_LIB_ROOT="/Users/callegarimattia/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/callegarimattia/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/callegarimattia/perl5"; export PERL_MM_OPT;
-
-# EMMA STUFF
-source $HOME/.developer-toolbox/developer-toolbox.sh
-function emma_standard () {
-  export AWS_CONFIG_FILE=~/.aws/offline-marketplaces;
-}
-function emma_elevated () {
-  export AWS_CONFIG_FILE=~/.aws/offline-marketplaces-elevated;
-}
-emma_standard

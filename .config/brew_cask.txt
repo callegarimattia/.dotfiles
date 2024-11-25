@@ -7,7 +7,6 @@ docker
 font-iosevka-nerd-font
 font-jetbrains-mono-nerd-font
 ghdl
-google-chrome
 hiddenbar
 iina
 imageoptim
