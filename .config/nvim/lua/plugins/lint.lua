@@ -3,9 +3,11 @@ return {
     event = "VeryLazy",
     config = function()
         local lint = require("lint")
+
         lint.linters_by_ft = {
-            go = { "golangcilint" },
+            go = { "golangcilint" }
         }
+
         vim.api.nvim_create_autocmd({ "BufReadPost", "InsertLeave", "FocusGained" }, {
             callback = function()
                 lint.try_lint()

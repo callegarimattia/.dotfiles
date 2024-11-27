@@ -14,13 +14,12 @@ return {
         { "<leader>sh", require("telescope.builtin").help_tags, desc = "[s]earch [h]elp tags" },
         {
             "<leader>sf",
-            function()
-                require("telescope.builtin").find_files({ hidden = true })
-            end,
+            function() require("telescope.builtin").find_files({ hidden = true }) end,
             desc = "[s]earch [f]iles"
         },
-        { "<leader>sl", require("telescope.builtin").live_grep, desc = "[s]earch [l]ive" },
-        { "<leader>sb", require("telescope.builtin").buffers,   desc = "[s]earch [b]uffers" },
-        -- { 'n', '<leader>sw', require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>") }), { desc = '[s]earch [w]ord' } },
+        { "<leader>sl", require("telescope.builtin").live_grep,   desc = "[s]earch [l]ive" },
+        { "<leader>sb", require("telescope.builtin").buffers,     desc = "[s]earch [b]uffers" },
+        { "<leader>sw", require("telescope.builtin").grep_string, desc = "[s]earch [w]ord" },
+        { "<leader>sk", require("telescope.builtin").keymaps,     desc = "[s]earch [k]eympas" }
     },
 }

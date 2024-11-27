@@ -16,8 +16,8 @@ return {
 
     config = function()
         local cmp = require("cmp")
-
         local lspkind = require("lspkind")
+
         lspkind.init({})
 
         local cmp_lsp = require("cmp_nvim_lsp")
