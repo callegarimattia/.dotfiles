@@ -25,7 +25,6 @@ require("lazy").setup({
 	change_detection = {
 		notify = false,
 	},
-	style = "tokyonight-moon",
 })
 
-vim.cmd.colorscheme("tokyonight-moon")
+vim.cmd.colorscheme("catppuccin")
